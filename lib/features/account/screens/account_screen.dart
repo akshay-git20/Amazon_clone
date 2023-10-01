@@ -1,5 +1,7 @@
 import 'package:amazon/constants/global_varible.dart';
 import 'package:amazon/features/account/widgets/below_app_bar.dart';
+import 'package:amazon/features/account/widgets/orders.dart';
+import 'package:amazon/features/account/widgets/top_button.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -13,13 +15,13 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size.fromHeight(50), child: AppBar(
+      appBar: PreferredSize(preferredSize: const Size.fromHeight(50), child: AppBar(
         elevation: 2,
-        backgroundColor: Color.fromARGB(255, 29, 201, 192), 
+        backgroundColor: const Color.fromARGB(255, 29, 201, 192), 
 
         flexibleSpace: Expanded(
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: GlobalVariables.appBarGradient,
             ),
           ),
@@ -33,11 +35,11 @@ class _AccountScreenState extends State<AccountScreen> {
           ),
           Container(
             padding: const EdgeInsets.only(left: 15,right: 15),
-            child: Row(
+            child: const Row(
               
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 15),
+                  padding: EdgeInsets.only(right: 15),
                   child: Icon(Icons.notifications_active_outlined),
                 ),
                 Icon(Icons.search_outlined)
@@ -48,10 +50,13 @@ class _AccountScreenState extends State<AccountScreen> {
         ),
       ),
       
-      body: Column(
+      body: const Column(
         children: [
-          BelowAppBar(),
-          SizedBox(height: 10,),
+           BelowAppBar(),
+           SizedBox(height: 10,),
+           TopButtons(),
+           SizedBox(height: 20,),
+            Orders()
 
         ],
       ),

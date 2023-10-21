@@ -19,11 +19,9 @@ class _AccountScreenState extends State<AccountScreen> {
         elevation: 2,
         backgroundColor: const Color.fromARGB(255, 29, 201, 192), 
 
-        flexibleSpace: Expanded(
-          child: Container(
-            decoration: const BoxDecoration(
-              gradient: GlobalVariables.appBarGradient,
-            ),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: GlobalVariables.appBarGradient,
           ),
         ),
         title: Row(

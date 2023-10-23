@@ -4,6 +4,7 @@ const mongoose=require('mongoose');
 
 //Import FROM OTHER FILES
 const authRouter = require('./routes/auth');
+const adminRouter = require('./routes/admin');
 
 //INit
 const app=express();
@@ -24,6 +25,7 @@ mongoose.connect(db).then(()=>{
 //Middleware
 app.use(express.json())
 app.use(authRouter)
+app.use(adminRouter)
 
 //post request
 

@@ -2,7 +2,6 @@ import 'package:amazon/constants/global_varible.dart';
 import 'package:amazon/features/account/screens/account_screen.dart';
 import 'package:amazon/features/admin/screens/post_screen.dart';
 import 'package:amazon/features/cart/screens/cart_screen.dart';
-import 'package:amazon/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class AdminScreen extends StatefulWidget {

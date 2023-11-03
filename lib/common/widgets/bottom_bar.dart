@@ -3,7 +3,6 @@ import 'package:amazon/features/account/screens/account_screen.dart';
 import 'package:amazon/features/cart/screens/cart_screen.dart';
 import 'package:amazon/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:badges/badges.dart' as badges;
 
 class BottomBar extends StatefulWidget {
   static const routeName = '/actual-home';

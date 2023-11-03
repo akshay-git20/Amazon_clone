@@ -63,16 +63,18 @@ class _PostsScreenState extends State<PostsScreen> {
                       return Column(
                         children: [
                           SizedBox(
-                            height: size.width/3,
+                            height: size.width / 3,
                             child: SingleProduct(image: productData.images[0]),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
-                                productData.name,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
+                              Expanded(
+                                child: Text(
+                                  productData.name,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ),
                               ),
                               IconButton(
                                   onPressed: (() =>

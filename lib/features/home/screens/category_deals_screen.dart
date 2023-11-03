@@ -2,6 +2,7 @@ import 'package:amazon/common/widgets/loader.dart';
 import 'package:amazon/constants/global_varible.dart';
 import 'package:amazon/features/account/widgets/single_product.dart';
 import 'package:amazon/features/home/services/home_services.dart';
+import 'package:amazon/features/product_details/screens/product_detail_screen.dart';
 import 'package:amazon/models/product.dart';
 import 'package:flutter/material.dart';
 
@@ -67,38 +68,48 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
             height: 170,
             child: productList == null
                 ? const Loader()
-                :  GridView.builder(
-                        scrollDirection: Axis.horizontal,
-                        padding: const EdgeInsets.only(left: 15),
-                        itemCount: productList!.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 1,
-                                childAspectRatio: 1.4,
-                                mainAxisSpacing: 10),
-                        itemBuilder: (context, index) {
-                          final productData = productList![index];
-                          return Column(
-                            children: [
-                              SizedBox(
-                                height: size.width / 3,
-                                child:
-                                    SingleProduct(image: productData.images[0]),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(
+                : GridView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.only(left: 15),
+                    itemCount: productList!.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                            childAspectRatio: 1.4,
+                            mainAxisSpacing: 10),
+                    itemBuilder: (context, index) {
+                      final productData = productList![index];
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            ProductDetailScreen.routeName,
+                            arguments: productData,
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: size.width / 3,
+                              child:
+                                  SingleProduct(image: productData.images[0]),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  child: Text(
                                     productData.name,
                                     overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
+                                    maxLines: 1,
                                   ),
-                                ],
-                              )
-                            ],
-                          );
-                        }),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    }),
           )
         ],
       ),

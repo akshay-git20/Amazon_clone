@@ -26,7 +26,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   final ProductDetailServices productDetailServices = ProductDetailServices();
 
   num avgRating = 0;
-  num myrRating = 0;
+  num myRating = 0;
 
   @override
   void initState() {
@@ -41,7 +41,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
       if (widget.product.ratings![i].userId ==
           Provider.of<UserProvider>(context, listen: false).user.id) {
-        myrRating = widget.product.ratings![i].rating;
+        myRating = widget.product.ratings![i].rating;
       }
     }
 
@@ -139,7 +139,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(widget.product.id!),
-                  Stars(rating: avgRating.toDouble())
+                  Stars(rating: avgRating.isFinite ? avgRating.toDouble() : 0.0)
                 ],
               ),
             ),
@@ -238,7 +238,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
             ),
             RatingBar.builder(
-                initialRating: myrRating.toDouble(),
+                initialRating: myRating.isFinite ? myRating.toDouble() : 0.0,
                 minRating: 0,
                 direction: Axis.horizontal,
                 allowHalfRating: true,
@@ -253,7 +253,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 onRatingUpdate: ((value) {
                   productDetailServices.rateProduct(
                       context: context, product: widget.product, rating: value);
-                  myrRating = value;
+                  myRating = value;
                   calculateAvgRating();
                   setState(() {});
                 }))

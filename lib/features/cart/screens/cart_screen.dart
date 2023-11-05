@@ -1,5 +1,6 @@
 import 'package:amazon/common/widgets/custom_button.dart';
 import 'package:amazon/constants/global_varible.dart';
+import 'package:amazon/features/address/screens/address_screen.dart';
 import 'package:amazon/features/cart/widget/cart_product.dart';
 import 'package:amazon/features/cart/widget/cart_subtotal.dart';
 import 'package:amazon/features/home/widgets/address_box.dart';
@@ -23,6 +24,12 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final user = context.watch<UserProvider>().user;
+
+    // calculating the sum of the total cart price
+    int sum = 0;
+    user.cart
+        .map((e) => sum += e['quantity'] * e['product']['price'] as int)
+        .toList();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -108,7 +115,10 @@ class _CartScreenState extends State<CartScreen> {
               padding: const EdgeInsets.all(8.0),
               child: CustomButton(
                 text: "Proceed to Buy (${user.cart.length} items)",
-                onTap: (() {}),
+                onTap: (() {
+                  Navigator.pushNamed(context, AddressScreen.routeName,
+                      arguments: sum.toString());
+                }),
                 color: Colors.yellow[600],
               ),
             ),

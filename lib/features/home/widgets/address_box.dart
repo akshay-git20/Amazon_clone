@@ -23,7 +23,7 @@ class _AddressBoxState extends State<AddressBox> {
             Color.fromARGB(255, 114, 226, 221),
             Color.fromARGB(255, 162, 236, 233),
           ],
-          stops: [0.5, 1.0],
+          stops: [0.5, 1.0], 
         ),
       ),
       padding: const EdgeInsets.only(left: 10),

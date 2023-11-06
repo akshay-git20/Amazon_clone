@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:amazon/common/widgets/custom_textfield.dart';
 import 'package:amazon/constants/global_varible.dart';
-import 'package:amazon/constants/payment_configuration.dart';
 import 'package:amazon/constants/utils.dart';
+import 'package:amazon/features/address/services/address_services.dart';
 import 'package:amazon/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:pay/pay.dart';
@@ -35,6 +35,7 @@ class _AddressScreenState extends State<AddressScreen> {
     )
   ];
   String addressTobeUsed = "";
+  final AddressServices addressServices = AddressServices();
 
   @override
   void dispose() {
@@ -45,7 +46,18 @@ class _AddressScreenState extends State<AddressScreen> {
     cityController.dispose();
   }
 
-  void onGooglePayResult(paymentResult) {}
+  void onGooglePayResult(paymentResult) {
+    if (Provider.of<UserProvider>(context, listen: false)
+        .user
+        .address
+        .isEmpty) {
+      addressServices.saveAddress(context: context, address: addressTobeUsed);
+    }
+    addressServices.placeOrder(
+        context: context,
+        address: addressTobeUsed,
+        totalSum: num.parse(widget.totalAmount));
+  }
 
   void payPressed(String addressFromProvider) {
     addressTobeUsed = " ";
@@ -143,7 +155,10 @@ class _AddressScreenState extends State<AddressScreen> {
                     height: 10,
                   ),
                   RawGooglePayButton(
-                    onPressed: () => payPressed(userAddress),
+                    onPressed: () {
+                      payPressed(userAddress);
+                      onGooglePayResult(userAddress);
+                    },
                     type: GooglePayButtonType.buy,
                   )
                   // GooglePayButton(

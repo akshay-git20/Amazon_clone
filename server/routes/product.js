@@ -70,7 +70,7 @@ productRouter.get('/api/deal-of-day',auth, async(req,res) => {
                 totalRatingsa+=b.ratings[i].rating;
             }
 
-            return totalRatingsb- totalRatingsa;
+            return totalRatingsa - totalRatingsb;
        })
 
        res.json(products[0]);

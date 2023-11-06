@@ -40,7 +40,7 @@ app.use(userRouter)
 // })
 
 // creating An API
-app.listen(PORT,"192.168.0.137",() => {
+app.listen(PORT,"0.0.0.0",() => {
     console.log(`connected at port ${PORT}`)
 })
 //localhost

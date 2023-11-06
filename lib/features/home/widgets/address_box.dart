@@ -11,6 +11,7 @@ class AddressBox extends StatefulWidget {
 
 class _AddressBoxState extends State<AddressBox> {
   bool showFullAddress = false;
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
@@ -23,7 +24,7 @@ class _AddressBoxState extends State<AddressBox> {
             Color.fromARGB(255, 114, 226, 221),
             Color.fromARGB(255, 162, 236, 233),
           ],
-          stops: [0.5, 1.0], 
+          stops: [0.5, 1.0],
         ),
       ),
       padding: const EdgeInsets.only(left: 10),
@@ -36,13 +37,14 @@ class _AddressBoxState extends State<AddressBox> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 5),
-              child: Text(
-                'Delivery to ${user.name} - Plot No:- 452 ,Swayamsiddha CHSL, Charkop, Sector 7, RDP 8, Sector 4 Charkop, Kandivali West, Mumbai, Maharashtra',
-                style: const TextStyle(
-                  fontWeight: FontWeight.w500,
-                ),
-                overflow: showFullAddress ? null : TextOverflow.ellipsis,
-              ),
+              child:  Text(
+                      'Delivery to ${user.name} - ${user.address}',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                      overflow: showFullAddress ? null : TextOverflow.ellipsis,
+                    )
+              ,
             ),
           ),
           GestureDetector(

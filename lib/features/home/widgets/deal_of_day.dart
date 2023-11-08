@@ -18,7 +18,9 @@ class _DealOfDayState extends State<DealOfDay> {
   @override
   void initState() {
     super.initState();
-    fetchDealOfDay();
+    if(mounted){
+      fetchDealOfDay();
+    }
   }
 
   void fetchDealOfDay() async {

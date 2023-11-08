@@ -1,9 +1,7 @@
 import 'package:amazon/constants/global_varible.dart';
-import 'package:amazon/features/account/services/account_services.dart';
 import 'package:amazon/features/account/widgets/below_app_bar.dart';
 import 'package:amazon/features/account/widgets/orders.dart';
 import 'package:amazon/features/account/widgets/top_button.dart';
-import 'package:amazon/models/order.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatefulWidget {

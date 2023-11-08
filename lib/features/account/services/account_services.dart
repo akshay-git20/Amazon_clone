@@ -4,7 +4,6 @@ import 'dart:convert';
 
 import 'package:amazon/constants/error_handing.dart';
 import 'package:amazon/constants/global_varible.dart';
-import 'package:amazon/constants/utils.dart';
 import 'package:amazon/models/order.dart';
 import 'package:amazon/provider/user_provider.dart';
 import 'package:flutter/material.dart';
